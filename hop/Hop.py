@@ -25,8 +25,6 @@ while True:
         userNumber = input('ur turn: ')
         if (number % 5 == 0 and userNumber != 'hop') or (is_integer(userNumber) and number != int(userNumber)):
             print('wrong number, try again')
-            exit()
-            
             continue
 
     number += 1
