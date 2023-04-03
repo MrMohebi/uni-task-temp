@@ -29,10 +29,3 @@ while True:
 
     number += 1
     computerTurn = not computerTurn
-
-
-# In[ ]:
-
-
-
-
