@@ -1,5 +1,5 @@
 import socket
-
+import threading
 
 def is_integer(n):
     try:
@@ -8,7 +8,6 @@ def is_integer(n):
         return False
     else:
         return float(n).is_integer()
-
 
 def handle_client(client_socket):
     number = 1
@@ -29,18 +28,16 @@ def handle_client(client_socket):
         number += 1
         computerTurn = not computerTurn
 
-
 def run_server():
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_socket.bind(('localhost', 8558))
+    server_socket.bind(('localhost', 8000))
     server_socket.listen()
-    print('Server started, listening on port 8558')
+    print('Server started, listening on port 8000')
     while True:
         client_socket, client_address = server_socket.accept()
         print(f'New client connected: {client_address}')
-        handle_client(client_socket)
-        client_socket.close()
-
+        t = threading.Thread(target=handle_client, args=(client_socket,))
+        t.start()
 
 if __name__ == '__main__':
     run_server()

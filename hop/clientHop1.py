@@ -3,7 +3,7 @@ import socket
 
 def run_client():
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.connect(('localhost', 8558))
+        s.connect(('localhost', 8000))
         while True:
             user_input = input('ur turn: ')
             s.send(user_input.encode())
